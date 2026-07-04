@@ -1,0 +1,55 @@
+.analysis {
+  max-width: 900px;
+}
+
+.analysis h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.analysis p {
+  color: #94a3b8;
+  margin-bottom: 30px;
+}
+
+.analysis textarea {
+  width: 100%;
+  min-height: 220px;
+
+  background: #111827;
+  border: 1px solid #374151;
+  border-radius: 12px;
+
+  color: white;
+
+  padding: 18px;
+
+  resize: vertical;
+
+  font-size: 16px;
+}
+
+.analysis button {
+  margin-top: 24px;
+
+  background: #2563eb;
+  color: white;
+
+  border: none;
+  border-radius: 10px;
+
+  padding: 14px 24px;
+
+  cursor: pointer;
+
+  font-size: 16px;
+}
+
+.analysis button:hover {
+  background: #1d4ed8;
+}
+
+.analysis button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
