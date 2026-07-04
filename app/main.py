@@ -2,11 +2,12 @@ from fastapi import FastAPI
 from app.schemas.prompt import PromptRequest
 from app.services.analyzer import analyze_prompt
 from app.schemas.response import AnalysisResponse
+from app.config.settings import settings
 
 app = FastAPI(
-    title="SentinelAI",
+    title=settings.app_name,
     description="AI Security Evaluation Platform",
-    version="1.0.0"
+    version=settings.app_version
 )
 
 @app.get("/")
