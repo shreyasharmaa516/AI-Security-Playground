@@ -1,0 +1,9 @@
+.home {
+  margin-top: 40px;
+}
+
+.stats {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
