@@ -1,18 +1,17 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .layout {
-  display: flex;
-  min-height: 100vh;
-  background: #0f172a;
-  color: white;
-  font-family: Inter, Arial, sans-serif;
+    display: grid;
+
+    grid-template-columns: 220px 1fr;
+
+    min-height: 100vh;
+
+    background: var(--background);
 }
 
 .content {
-  flex: 1;
-  padding: 40px;
+    padding: 40px 48px;
+
+    overflow-y: auto;
+
+    width: 100%;
 }

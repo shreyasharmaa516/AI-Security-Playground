@@ -1,0 +1,109 @@
+.threat-card{
+
+    background:var(--surface);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:16px;
+
+    padding:28px;
+
+}
+
+.threat-header{
+
+    margin-bottom:30px;
+
+}
+
+.chart-placeholder{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-bottom:30px;
+
+}
+
+.circle{
+
+    width:170px;
+
+    height:170px;
+
+    border-radius:50%;
+
+    border:10px solid rgba(255,255,255,.08);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.circle span{
+
+    font-size:2.5rem;
+
+    font-weight:700;
+
+}
+
+.circle small{
+
+    color:var(--text-secondary);
+
+}
+
+.legend{
+
+    display:flex;
+
+    justify-content:space-around;
+
+}
+
+.legend div{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:var(--text-secondary);
+
+}
+
+.legend-dot{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+}
+
+.legend-dot.critical{
+
+    background:#ef4444;
+
+}
+
+.legend-dot.warning{
+
+    background:#f59e0b;
+
+}
+
+.legend-dot.success{
+
+    background:#22c55e;
+
+}

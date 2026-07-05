@@ -1,51 +1,77 @@
 .sidebar {
-  width: 260px;
-  min-height: 100vh;
+    background: #101827;
 
-  background: #0f172a;
+    border-right: 1px solid rgba(255,255,255,.06);
 
-  border-right: 1px solid #1e293b;
+    display: flex;
 
-  padding: 30px 20px;
+    flex-direction: column;
+
+    padding: 36px 0;
 }
 
 .logo {
-  color: white;
-  font-size: 2rem;
-  font-weight: bold;
+    padding: 0 32px;
 
-  margin-bottom: 40px;
+    font-size: 1.9rem;
+
+    font-weight: 700;
+
+    letter-spacing: -.04em;
+
+    margin-bottom: 52px;
 }
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.sidebar-nav {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
 }
 
-.sidebar li {
-  margin-bottom: 12px;
+.sidebar-nav a {
+    position: relative;
+
+    height: 46px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding-left: 34px;
+
+    color: var(--text-secondary);
+
+    text-decoration: none;
+
+    font-size: .98rem;
+
+    font-weight: 500;
+
+    transition: .2s;
 }
 
-.sidebar a {
-  display: block;
-
-  padding: 16px 20px;
-
-  border-radius: 12px;
-
-  color: white;
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 500;
-
-  transition: all 0.25s ease;
+.sidebar-nav a:hover {
+    color: white;
 }
 
-.sidebar a:hover {
-  background: #1e293b;
+.sidebar-nav a.active {
+    color: white;
 }
 
-.sidebar a.active {
-  background: #2563eb;
+.sidebar-nav a.active::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    width: 3px;
+
+    height: 24px;
+
+    border-radius: 999px;
+
+    background: var(--primary);
 }
