@@ -17,3 +17,23 @@ export async function analyzePrompt(prompt) {
 
   return response.json();
 }
+
+export async function getDashboardStats() {
+  const response = await fetch(`${API_URL}/dashboard`);
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch dashboard.");
+  }
+
+  return response.json();
+}
+
+export async function getAnalysisHistory() {
+  const response = await fetch(`${API_URL}/history`);
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch history.");
+  }
+
+  return response.json();
+}

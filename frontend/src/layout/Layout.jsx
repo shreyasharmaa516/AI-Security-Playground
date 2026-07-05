@@ -1,14 +1,22 @@
 import "./Layout.css";
+
 import Sidebar from "../components/Sidebar/Sidebar";
+import TopBar from "../components/TopBar/TopBar";
 
 export default function Layout({ children }) {
   return (
     <div className="layout">
+
       <Sidebar />
 
-      <div className="content">
+      <main className="content">
+
+        <TopBar />
+
         {children}
-      </div>
+
+      </main>
+
     </div>
   );
 }

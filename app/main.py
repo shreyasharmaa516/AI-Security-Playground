@@ -1,9 +1,10 @@
 from fastapi import FastAPI
-from app.schemas.prompt import PromptRequest
-from app.services.analyzer import analyze_prompt
-from app.schemas.response import AnalysisResponse
-from app.config.settings import settings
 from fastapi.middleware.cors import CORSMiddleware
+
+from app.schemas.prompt import PromptRequest
+from app.schemas.response import AnalysisResponse
+from app.services.analyzer import analyze_prompt
+from app.config.settings import settings
 
 app = FastAPI(
     title=settings.app_name,
@@ -19,6 +20,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.get("/")
 def root():
     return {
@@ -32,6 +34,38 @@ def health():
         "status": "healthy"
     }
 
+
 @app.post("/analyze", response_model=AnalysisResponse)
 def analyze(request: PromptRequest):
     return analyze_prompt(request.prompt)
+
+
+@app.get("/dashboard")
+def dashboard():
+    return {
+        "totalAnalyses": 126,
+        "highRisk": 18,
+        "critical": 5,
+        "safe": 103,
+    }
+
+
+@app.get("/history")
+def history():
+    return [
+        {
+            "prompt": "Ignore previous instructions...",
+            "risk_score": 95,
+            "severity": "Critical"
+        },
+        {
+            "prompt": "Generate SQL query...",
+            "risk_score": 48,
+            "severity": "Medium"
+        },
+        {
+            "prompt": "Tell me a joke.",
+            "risk_score": 5,
+            "severity": "Low"
+        }
+    ]
