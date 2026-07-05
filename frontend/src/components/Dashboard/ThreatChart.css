@@ -1,27 +1,73 @@
-.threat-card {
+.threat-card{
 
-    background: var(--surface);
+    background:var(--surface);
 
-    border: 1px solid rgba(255,255,255,.06);
+    border:1px solid var(--border);
 
-    border-radius: 16px;
+    border-radius:18px;
 
-    padding: 28px;
+    padding:28px;
 
-}
-
-.threat-header {
-
-    margin-bottom: 24px;
+    height:fit-content;
 
 }
 
-.chart-wrapper {
+.threat-header{
 
-    width: 100%;
+    margin-bottom:20px;
 
-    max-width: 320px;
+}
 
-    margin: auto;
+.chart-wrapper{
+
+    width:100%;
+
+    max-width:260px;
+
+    margin:20px auto 0;
+
+    transition:.3s;
+
+}
+
+.chart-wrapper:hover{
+
+    transform:scale(1.02);
+
+}.threat-card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:28px;
+
+    height:fit-content;
+
+}
+
+.threat-header{
+
+    margin-bottom:20px;
+
+}
+
+.chart-wrapper{
+
+    width:100%;
+
+    max-width:260px;
+
+    margin:20px auto 0;
+
+    transition:.3s;
+
+}
+
+.chart-wrapper:hover{
+
+    transform:scale(1.02);
 
 }

@@ -1,29 +1,50 @@
 :root {
 
-  /* Colors */
+  /* Background */
 
-  --background: #0F172A;
-  --surface: #111827;
-  --surface-light: #1F2937;
+  --background: #020617;
+  --surface: #0F172A;
+  --surface-light: #1E293B;
+  --surface-hover: #273449;
 
-  --primary: #2563EB;
+  /* Brand */
+
+  --primary: #3B82F6;
+  --primary-light: #60A5FA;
+
+  /* Status */
 
   --success: #22C55E;
   --warning: #F59E0B;
-  --danger: #DC2626;
+  --danger: #EF4444;
+
+  /* Text */
 
   --text-primary: #F8FAFC;
   --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+
+  /* Borders */
+
+  --border: rgba(255,255,255,.08);
+  --border-hover: rgba(59,130,246,.35);
 
   /* Radius */
 
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
+  --radius-sm:10px;
+  --radius-md:16px;
+  --radius-lg:22px;
 
-  /* Shadow */
+  /* Shadows */
 
-  --shadow:
-    0 4px 18px rgba(0,0,0,.18);
+  --shadow-sm:
+      0 4px 18px rgba(0,0,0,.18);
+
+  --shadow-lg:
+      0 16px 40px rgba(0,0,0,.35);
+
+  /* Animation */
+
+  --transition:.28s ease;
 
 }

@@ -1,22 +1,76 @@
 import "./Sidebar.css";
+
 import { NavLink } from "react-router-dom";
+
+import {
+  LayoutDashboard,
+  FileSearch,
+  History,
+  BarChart3,
+  Settings,
+} from "lucide-react";
 
 export default function Sidebar() {
   return (
     <aside className="sidebar">
-      <h1 className="logo">SentinelAI</h1>
 
-      <nav className="sidebar-nav">
-        <NavLink to="/dashboard">Dashboard</NavLink>
+      <div>
 
-        <NavLink to="/analysis">New Analysis</NavLink>
+        <div className="brand">
 
-        <NavLink to="/reports">Reports</NavLink>
+          <h1>SentinelAI</h1>
 
-        <NavLink to="/history">History</NavLink>
+        </div>
 
-        <NavLink to="/settings">Settings</NavLink>
-      </nav>
+        <p className="section-title">
+          MAIN
+        </p>
+
+        <nav className="sidebar-nav">
+
+          <NavLink to="/dashboard">
+            <LayoutDashboard size={18}/>
+            <span>Dashboard</span>
+          </NavLink>
+
+          <NavLink to="/analysis">
+            <FileSearch size={18}/>
+            <span>Analysis</span>
+          </NavLink>
+
+          <NavLink to="/history">
+            <History size={18}/>
+            <span>History</span>
+          </NavLink>
+
+          <NavLink to="/reports">
+            <BarChart3 size={18}/>
+            <span>Reports</span>
+          </NavLink>
+
+        </nav>
+
+        <p className="section-title system">
+          SYSTEM
+        </p>
+
+        <nav className="sidebar-nav">
+
+          <NavLink to="/settings">
+            <Settings size={18}/>
+            <span>Settings</span>
+          </NavLink>
+
+        </nav>
+
+      </div>
+
+      <div className="version">
+
+        Version 1.0
+
+      </div>
+
     </aside>
   );
 }

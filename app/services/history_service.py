@@ -55,3 +55,4 @@ def get_dashboard_stats(db: Session):
         "critical": critical,
         "safe": safe,
     }
+    

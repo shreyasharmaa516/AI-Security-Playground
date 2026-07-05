@@ -6,6 +6,7 @@ import StatCard from "../../components/StatCard/StatCard";
 import RecentTable from "../../components/Dashboard/RecentTable";
 import ActivityCard from "../../components/Dashboard/ActivityCard";
 import ThreatChart from "../../components/Dashboard/ThreatChart";
+import SecurityInsights from "../../components/Dashboard/SecurityInsights";
 
 export default function Dashboard() {
 
@@ -17,9 +18,17 @@ export default function Dashboard() {
       <header className="dashboard-header">
 
         <div>
-          <h1>Dashboard</h1>
 
-          <p>AI Prompt Security Monitoring Overview</p>
+          <small className="dashboard-label">
+            SENTINELAI
+          </small>
+
+          <h1>Security Dashboard</h1>
+
+          <p>
+            Monitor AI prompt security, detect threats and review recent analyses.
+          </p>
+
         </div>
 
       </header>
@@ -29,28 +38,21 @@ export default function Dashboard() {
         <StatCard
           title="Total Analyses"
           value={stats.totalAnalyses}
-          subtitle="+12% from last week"
+          subtitle="Live"
           accent="var(--primary)"
         />
 
         <StatCard
-          title="High Risk"
-          value={stats.highRisk}
-          subtitle="+5% from last week"
-          accent="var(--warning)"
-        />
-
-        <StatCard
-          title="Critical"
+          title="Critical Threats"
           value={stats.critical}
-          subtitle="+2% from last week"
+          subtitle="Live"
           accent="var(--danger)"
         />
 
         <StatCard
           title="Safe Prompts"
           value={stats.safe}
-          subtitle="+15% from last week"
+          subtitle="Live"
           accent="var(--success)"
         />
 
@@ -60,15 +62,15 @@ export default function Dashboard() {
 
         <div className="left-column">
 
-          <RecentTable />
+          <RecentTable/>
 
-          <ActivityCard />
+          <SecurityInsights />
 
         </div>
 
         <div className="right-column">
 
-          <ThreatChart />
+          <ThreatChart/>
 
         </div>
 
@@ -76,4 +78,5 @@ export default function Dashboard() {
 
     </div>
   );
+
 }

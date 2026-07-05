@@ -1,6 +1,8 @@
 import "./TopBar.css";
 
+import { Bell, Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+
 import { useSearch } from "../../context/SearchContext/SearchContext";
 
 export default function TopBar() {
@@ -9,9 +11,9 @@ export default function TopBar() {
 
   const { search, setSearch } = useSearch();
 
-  function handleKeyDown(event) {
+  function handleKeyDown(e) {
 
-    if (event.key === "Enter") {
+    if (e.key === "Enter") {
 
       navigate("/history");
 
@@ -20,15 +22,17 @@ export default function TopBar() {
   }
 
   return (
+
     <header className="topbar">
 
-      <div className="search-box">
+      <div className="search">
+
+        <Search size={18} />
 
         <input
-          type="text"
           placeholder="Search analyses..."
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e)=>setSearch(e.target.value)}
           onKeyDown={handleKeyDown}
         />
 
@@ -36,19 +40,26 @@ export default function TopBar() {
 
       <div className="topbar-right">
 
-        <button className="notification-btn">
-          🔔
+        <button className="notification">
+
+          <Bell size={18}/>
+
         </button>
 
         <div className="profile">
 
           <div className="avatar">
+
             S
+
           </div>
 
           <div>
+
             <h4>Shreya</h4>
-            <p>Security Analyst</p>
+
+            <small>Security Analyst</small>
+
           </div>
 
         </div>
@@ -56,5 +67,7 @@ export default function TopBar() {
       </div>
 
     </header>
+
   );
+
 }
