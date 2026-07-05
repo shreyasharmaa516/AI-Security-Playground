@@ -1,34 +1,64 @@
 import { useState } from "react";
-import { analyzePrompt } from "../../services/api";
+
 import "./Analysis.css";
+
+import { analyzePrompt } from "../../services/api";
+
 import ResultCard from "../../components/ResultCard/ResultCard";
 
+import { useDashboard } from "../../context/DashboardContext";
+
 export default function Analysis() {
+
   const [prompt, setPrompt] = useState("");
+
   const [result, setResult] = useState(null);
+
   const [loading, setLoading] = useState(false);
 
+  const { refreshDashboard } = useDashboard();
+
   async function handleAnalyze() {
-  if (!prompt.trim()) {
-    alert("Please enter a prompt.");
-    return;
+
+    if (!prompt.trim()) {
+
+      alert("Please enter a prompt.");
+
+      return;
+
+    }
+
+    try {
+
+      setLoading(true);
+
+      const response = await analyzePrompt(prompt);
+
+      setResult(response);
+
+      await refreshDashboard();
+
+    }
+
+    catch (error) {
+
+      console.error(error);
+
+      alert("Analysis failed.");
+
+    }
+
+    finally {
+
+      setLoading(false);
+
+    }
+
   }
 
-  try {
-    setLoading(true);
-
-    const response = await analyzePrompt(prompt);
-
-    setResult(response);
-  } catch (error) {
-    console.error(error);
-    alert("Analysis failed.");
-  } finally {
-    setLoading(false);
-  }
-}
   return (
     <div className="analysis">
+
       <h1>New Analysis</h1>
 
       <p>
@@ -49,6 +79,7 @@ export default function Analysis() {
       </button>
 
       <ResultCard result={result} />
+
     </div>
   );
 }

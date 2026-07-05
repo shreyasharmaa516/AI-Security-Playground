@@ -9,6 +9,8 @@ import {
 
 import { Doughnut } from "react-chartjs-2";
 
+import { useDashboard } from "../../context/DashboardContext";
+
 ChartJS.register(
   ArcElement,
   Tooltip,
@@ -16,15 +18,23 @@ ChartJS.register(
 );
 
 export default function ThreatChart() {
-  const data = {
+
+  const { stats } = useDashboard();
+
+  const chartData = {
     labels: [
       "Critical",
       "High",
       "Safe",
     ],
+
     datasets: [
       {
-        data: [5, 18, 103],
+        data: [
+          stats.critical,
+          stats.highRisk,
+          stats.safe,
+        ],
 
         backgroundColor: [
           "#ef4444",
@@ -49,11 +59,11 @@ export default function ThreatChart() {
         labels: {
           color: "#94A3B8",
 
-          padding: 18,
-
           usePointStyle: true,
 
           pointStyle: "circle",
+
+          padding: 18,
         },
       },
     },
@@ -67,10 +77,12 @@ export default function ThreatChart() {
       </div>
 
       <div className="chart-wrapper">
+
         <Doughnut
-          data={data}
+          data={chartData}
           options={options}
         />
+
       </div>
 
     </div>
