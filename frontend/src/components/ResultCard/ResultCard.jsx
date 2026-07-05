@@ -4,10 +4,13 @@ import {
   FaLightbulb,
   FaExclamationTriangle,
   FaChartBar,
+  FaCheckCircle,
 } from "react-icons/fa";
 
 export default function ResultCard({ result }) {
   if (!result) return null;
+
+  const hasThreats = result.detections.length > 0;
 
   return (
     <div className="result-card">
@@ -17,7 +20,6 @@ export default function ResultCard({ result }) {
       </h2>
 
       <div className="stats-grid">
-
         <div className="stat-card">
           <span className="stat-title">Risk Score</span>
 
@@ -48,15 +50,20 @@ export default function ResultCard({ result }) {
             {result.severity}
           </div>
         </div>
-
       </div>
 
-      <div className="analysis-message">
-
-        <FaChartBar />
+      <div
+        className={`analysis-message ${
+          hasThreats ? "danger" : "safe"
+        }`}
+      >
+        {hasThreats ? (
+          <FaExclamationTriangle />
+        ) : (
+          <FaCheckCircle />
+        )}
 
         <p>{result.message}</p>
-
       </div>
 
       <h3>
@@ -65,11 +72,7 @@ export default function ResultCard({ result }) {
       </h3>
 
       <div className="detections">
-        {result.detections.length === 0 ? (
-          <p className="no-detections">
-            ✅ No threats detected.
-          </p>
-        ) : (
+        {hasThreats ? (
           result.detections.map((item, index) => (
             <div
               key={index}
@@ -101,6 +104,11 @@ export default function ResultCard({ result }) {
               </p>
             </div>
           ))
+        ) : (
+          <p className="no-detections">
+            <FaCheckCircle />
+            No threats detected.
+          </p>
         )}
       </div>
     </div>

@@ -1,27 +1,128 @@
 .history-page{
+
     width:100%;
+
+    animation:fadeIn .35s ease;
+
 }
 
 .history-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
     margin-bottom:32px;
+
 }
 
 .history-header h1{
-    font-size:2.6rem;
+
+    font-size:2.7rem;
+
     margin-bottom:8px;
+
 }
 
 .history-header p{
+
     color:var(--text-secondary);
+
+}
+
+.history-controls{
+
+    display:flex;
+
+    gap:16px;
+
+    align-items:center;
+
+}
+
+.history-search{
+
+    width:320px;
+
+    height:46px;
+
+    padding:0 16px;
+
+    background:var(--surface);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:12px;
+
+    color:white;
+
+    outline:none;
+
+    transition:.25s;
+
+}
+
+.history-search:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 3px rgba(59,130,246,.15);
+
+}
+
+.history-search::placeholder{
+
+    color:var(--text-secondary);
+
+}
+
+.history-filter{
+
+    width:170px;
+
+    height:46px;
+
+    padding:0 14px;
+
+    background:var(--surface);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:12px;
+
+    color:white;
+
+    outline:none;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.history-filter:focus{
+
+    border-color:var(--primary);
+
+}
+
+.history-filter option{
+
+    background:#0f172a;
+
+    color:white;
+
 }
 
 .history-table{
 
     background:var(--surface);
 
-    border:1px solid rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
 
-    border-radius:16px;
+    border-radius:18px;
 
     overflow:hidden;
 
@@ -43,7 +144,9 @@
 
     color:var(--text-secondary);
 
-    font-weight:500;
+    font-weight:600;
+
+    background:rgba(255,255,255,.02);
 
 }
 
@@ -55,6 +158,22 @@
 
 }
 
+.history-table tbody tr{
+
+    transition:
+        background .25s,
+        transform .25s;
+
+}
+
+.history-table tbody tr:hover{
+
+    background:rgba(59,130,246,.06);
+
+    cursor:pointer;
+
+}
+
 .status{
 
     display:inline-flex;
@@ -63,7 +182,7 @@
 
     align-items:center;
 
-    min-width:90px;
+    min-width:100px;
 
     height:34px;
 
@@ -71,7 +190,9 @@
 
     font-size:.82rem;
 
-    font-weight:600;
+    font-weight:700;
+
+    border:1px solid transparent;
 
 }
 
@@ -81,13 +202,7 @@
 
     background:rgba(34,197,94,.10);
 
-}
-
-.status.medium{
-
-    color:#fde047;
-
-    background:rgba(245,158,11,.10);
+    border-color:rgba(34,197,94,.25);
 
 }
 
@@ -97,6 +212,8 @@
 
     background:rgba(251,146,60,.10);
 
+    border-color:rgba(251,146,60,.25);
+
 }
 
 .status.critical{
@@ -104,5 +221,27 @@
     color:#fca5a5;
 
     background:rgba(239,68,68,.10);
+
+    border-color:rgba(239,68,68,.25);
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(12px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
 
 }

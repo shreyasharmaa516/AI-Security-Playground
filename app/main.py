@@ -16,6 +16,8 @@ from app.services.history_service import (
     get_dashboard_stats,
 )
 
+from fastapi.responses import StreamingResponse
+
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
@@ -85,3 +87,4 @@ def history(
     db: Session = Depends(get_db),
 ):
     return get_all_analyses(db)
+

@@ -217,11 +217,18 @@
 }
 
 .no-detections {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
   color: #22c55e;
 
-  font-size: 1.1rem;
-
+  font-size: 1.05rem;
   font-weight: 600;
+}
+
+.no-detections svg {
+  flex-shrink: 0;
 }
 
 .detection-card {

@@ -1,31 +1,76 @@
 import "./History.css";
 
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 
-import { getAnalysisHistory } from "../../services/api";
+import { useHistory } from "../../context/HistoryContext";
+import { useSearch } from "../../context/SearchContext/SearchContext";
+
+import AnalysisModal from "../../components/AnalysisModal/AnalysisModal";
 
 export default function History() {
-  const [history, setHistory] = useState([]);
 
-  useEffect(() => {
-    async function loadHistory() {
-      try {
-        const data = await getAnalysisHistory();
-        setHistory(data);
-      } catch (err) {
-        console.error(err);
-      }
-    }
+  const { history } = useHistory();
 
-    loadHistory();
-  }, []);
+  const { search, setSearch } = useSearch();
+
+  const [severity, setSeverity] = useState("All");
+
+  const [selectedAnalysis, setSelectedAnalysis] = useState(null);
+
+  const filteredHistory = useMemo(() => {
+
+    return history.filter((item) => {
+
+      const matchesSearch =
+        item.prompt.toLowerCase().includes(search.toLowerCase());
+
+      const matchesSeverity =
+        severity === "All" ||
+        item.severity === severity;
+
+      return matchesSearch && matchesSeverity;
+
+    });
+
+  }, [history, search, severity]);
 
   return (
     <div className="history-page">
 
       <div className="history-header">
-        <h1>Analysis History</h1>
-        <p>All prompt analyses stored in SentinelAI</p>
+
+        <div>
+
+          <h1>Analysis History</h1>
+
+          <p>All prompt analyses stored in SentinelAI</p>
+
+        </div>
+
+        <div className="history-controls">
+
+          <input
+            className="history-search"
+            placeholder="Search prompts..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+
+          <select
+            className="history-filter"
+            value={severity}
+            onChange={(e) => setSeverity(e.target.value)}
+          >
+
+            <option>All</option>
+            <option>Low</option>
+            <option>High</option>
+            <option>Critical</option>
+
+          </select>
+
+        </div>
+
       </div>
 
       <div className="history-table">
@@ -35,26 +80,24 @@ export default function History() {
           <thead>
 
             <tr>
-
               <th>ID</th>
-
               <th>Prompt</th>
-
               <th>Risk</th>
-
               <th>Severity</th>
-
               <th>Date</th>
-
             </tr>
 
           </thead>
 
           <tbody>
 
-            {history.map((item) => (
+            {filteredHistory.map((item) => (
 
-              <tr key={item.id}>
+              <tr
+                key={item.id}
+                style={{ cursor: "pointer" }}
+                onClick={() => setSelectedAnalysis(item)}
+              >
 
                 <td>{item.id}</td>
 
@@ -63,21 +106,28 @@ export default function History() {
                 <td>{item.risk_score}</td>
 
                 <td>
+
                   <span
                     className={`status ${item.severity.toLowerCase()}`}
                   >
                     {item.severity}
                   </span>
+
                 </td>
 
                 <td>
-                  {new Date(item.created_at).toLocaleString("en-IN", {
-                    day: "2-digit",
-                    month: "short",
-                    year: "numeric",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  })}
+
+                  {new Date(item.created_at).toLocaleString(
+                    "en-IN",
+                    {
+                      day: "2-digit",
+                      month: "short",
+                      year: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    }
+                  )}
+
                 </td>
 
               </tr>
@@ -89,6 +139,12 @@ export default function History() {
         </table>
 
       </div>
+
+      <AnalysisModal
+        open={selectedAnalysis !== null}
+        analysis={selectedAnalysis}
+        onClose={() => setSelectedAnalysis(null)}
+      />
 
     </div>
   );

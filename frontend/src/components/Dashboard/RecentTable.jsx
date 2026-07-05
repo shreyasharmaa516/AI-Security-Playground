@@ -1,6 +1,13 @@
 import "./RecentTable.css";
 
+import { useHistory } from "../../context/HistoryContext";
+
 export default function RecentTable() {
+
+  const { history } = useHistory();
+
+  const recent = history.slice(0, 5);
+
   return (
     <div className="recent-table">
 
@@ -8,7 +15,7 @@ export default function RecentTable() {
 
         <h2>Recent Analyses</h2>
 
-        <span>Last 24 Hours</span>
+        <span>Latest 5</span>
 
       </div>
 
@@ -19,9 +26,7 @@ export default function RecentTable() {
           <tr>
 
             <th>Prompt</th>
-
             <th>Risk</th>
-
             <th>Status</th>
 
           </tr>
@@ -30,41 +35,33 @@ export default function RecentTable() {
 
         <tbody>
 
-          <tr>
+          {recent.map((item) => (
 
-            <td>Ignore previous instructions...</td>
+            <tr key={item.id}>
 
-            <td>95</td>
+              <td>
 
-            <td>
-              <span className="status critical">Critical</span>
-            </td>
+                {item.prompt.length > 45
+                  ? item.prompt.substring(0, 45) + "..."
+                  : item.prompt}
 
-          </tr>
+              </td>
 
-          <tr>
+              <td>{item.risk_score}</td>
 
-            <td>Generate SQL query...</td>
+              <td>
 
-            <td>48</td>
+                <span
+                  className={`status ${item.severity.toLowerCase()}`}
+                >
+                  {item.severity}
+                </span>
 
-            <td>
-              <span className="status medium">Medium</span>
-            </td>
+              </td>
 
-          </tr>
+            </tr>
 
-          <tr>
-
-            <td>Tell me a joke.</td>
-
-            <td>5</td>
-
-            <td>
-              <span className="status low">Low</span>
-            </td>
-
-          </tr>
+          ))}
 
         </tbody>
 

@@ -8,6 +8,8 @@ import ResultCard from "../../components/ResultCard/ResultCard";
 
 import { useDashboard } from "../../context/DashboardContext";
 
+import { useHistory } from "../../context/HistoryContext";
+
 export default function Analysis() {
 
   const [prompt, setPrompt] = useState("");
@@ -17,6 +19,8 @@ export default function Analysis() {
   const [loading, setLoading] = useState(false);
 
   const { refreshDashboard } = useDashboard();
+
+  const { refreshHistory } = useHistory();
 
   async function handleAnalyze() {
 
@@ -36,7 +40,10 @@ export default function Analysis() {
 
       setResult(response);
 
-      await refreshDashboard();
+      await Promise.all([
+        refreshDashboard(),
+        refreshHistory(),
+      ]);
 
     }
 
