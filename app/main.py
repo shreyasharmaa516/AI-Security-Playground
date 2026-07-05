@@ -1,15 +1,27 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy.orm import Session
+
+from app.config.settings import settings
+from app.database.database import Base, SessionLocal, engine
+from app.models.analysis import Analysis
 
 from app.schemas.prompt import PromptRequest
 from app.schemas.response import AnalysisResponse
+
 from app.services.analyzer import analyze_prompt
-from app.config.settings import settings
+from app.services.history_service import (
+    save_analysis,
+    get_all_analyses,
+    get_dashboard_stats,
+)
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title=settings.app_name,
     description="AI Security Evaluation Platform",
-    version=settings.app_version
+    version=settings.app_version,
 )
 
 app.add_middleware(
@@ -19,6 +31,14 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 
 @app.get("/")
@@ -36,36 +56,32 @@ def health():
 
 
 @app.post("/analyze", response_model=AnalysisResponse)
-def analyze(request: PromptRequest):
-    return analyze_prompt(request.prompt)
+def analyze(
+    request: PromptRequest,
+    db: Session = Depends(get_db),
+):
+    result = analyze_prompt(request.prompt)
+
+    save_analysis(
+        db=db,
+        prompt=result["prompt"],
+        risk_score=result["risk_score"],
+        severity=result["severity"],
+        message=result["message"],
+    )
+
+    return result
 
 
 @app.get("/dashboard")
-def dashboard():
-    return {
-        "totalAnalyses": 126,
-        "highRisk": 18,
-        "critical": 5,
-        "safe": 103,
-    }
+def dashboard(
+    db: Session = Depends(get_db),
+):
+    return get_dashboard_stats(db)
 
 
 @app.get("/history")
-def history():
-    return [
-        {
-            "prompt": "Ignore previous instructions...",
-            "risk_score": 95,
-            "severity": "Critical"
-        },
-        {
-            "prompt": "Generate SQL query...",
-            "risk_score": 48,
-            "severity": "Medium"
-        },
-        {
-            "prompt": "Tell me a joke.",
-            "risk_score": 5,
-            "severity": "Low"
-        }
-    ]
+def history(
+    db: Session = Depends(get_db),
+):
+    return get_all_analyses(db)
