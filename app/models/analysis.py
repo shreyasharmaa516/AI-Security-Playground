@@ -39,5 +39,5 @@ class Analysis(Base):
 
     created_at = Column(
         DateTime,
-        default=datetime.utcnow
+        default=datetime.now
     )
