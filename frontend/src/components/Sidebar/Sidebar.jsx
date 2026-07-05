@@ -1,4 +1,5 @@
 import "./Sidebar.css";
+import { NavLink } from "react-router-dom";
 
 export default function Sidebar() {
   return (
@@ -7,11 +8,60 @@ export default function Sidebar() {
 
       <nav>
         <ul>
-          <li className="active">Dashboard</li>
-          <li>New Analysis</li>
-          <li>Reports</li>
-          <li>History</li>
-          <li>Settings</li>
+          <li>
+            <NavLink
+              to="/dashboard"
+              className={({ isActive }) =>
+                isActive ? "active" : ""
+              }
+            >
+              Dashboard
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/analysis"
+              className={({ isActive }) =>
+                isActive ? "active" : ""
+              }
+            >
+              New Analysis
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/reports"
+              className={({ isActive }) =>
+                isActive ? "active" : ""
+              }
+            >
+              Reports
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/history"
+              className={({ isActive }) =>
+                isActive ? "active" : ""
+              }
+            >
+              History
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/settings"
+              className={({ isActive }) =>
+                isActive ? "active" : ""
+              }
+            >
+              Settings
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </aside>
