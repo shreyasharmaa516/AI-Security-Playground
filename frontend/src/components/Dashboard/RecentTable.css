@@ -93,3 +93,53 @@
 
     border-color: rgba(239,68,68,.30);
 }
+
+.table-header p{
+
+    margin-top:6px;
+
+    font-size:.9rem;
+
+    color:var(--text-secondary);
+
+}
+
+.prompt-cell{
+
+    font-weight:500;
+
+    max-width:340px;
+
+}
+
+.category{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:var(--text-secondary);
+
+    font-size:.92rem;
+
+}
+
+.category svg{
+
+    color:var(--primary);
+
+}
+
+.recent-table tbody tr{
+
+    transition:.25s;
+
+}
+
+.recent-table tbody tr:hover{
+
+    background:rgba(59,130,246,.05);
+
+}

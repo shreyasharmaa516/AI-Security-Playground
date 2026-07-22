@@ -1,4 +1,4 @@
-# SentinelAI Roadmap
+# Sentra Roadmap
 
 ## Version 1.0 - Core Platform
 

@@ -18,7 +18,7 @@ def generate_report(stats: dict, history: list):
     elements = []
 
     title = Paragraph(
-        "<b>SentinelAI Security Report</b>",
+        "<b>Sentra Security Report</b>",
         styles["Title"],
     )
 
@@ -67,9 +67,7 @@ def generate_report(stats: dict, history: list):
     for item in history[:5]:
 
         elements.append(
-
             Paragraph(
-
                 f"""
                 <font color="#2563eb">
                 {item.prompt}
@@ -84,11 +82,8 @@ def generate_report(stats: dict, history: list):
                 {item.severity}
                 </font>
                 """,
-
                 styles["BodyText"],
-
             )
-
         )
 
         elements.append(Spacer(1, 12))

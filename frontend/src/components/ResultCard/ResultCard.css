@@ -53,7 +53,7 @@
 
   color: #94a3b8;
 
-  font-size: .95rem;
+  font-size: 0.95rem;
 }
 
 .stat-card h3 {
@@ -80,7 +80,7 @@
 .risk-fill {
   height: 100%;
 
-  transition: width .35s ease;
+  transition: width 0.35s ease;
 }
 
 .risk-fill.low {
@@ -241,7 +241,7 @@
 
   border-radius: 14px;
 
-  transition: .25s;
+  transition: 0.25s;
 }
 
 .detection-card:hover {
@@ -304,4 +304,66 @@
 
 .recommendation svg {
   margin-top: 2px;
+}
+
+/* ================= LEARN ABOUT RULE ================= */
+
+.learn-card {
+  margin-top: 18px;
+  padding: 18px;
+
+  background: #111827;
+
+  border: 1px solid #334155;
+  border-left: 4px solid #22c55e;
+
+  border-radius: 12px;
+}
+
+.learn-card h5 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 14px;
+
+  color: white;
+  font-size: 1rem;
+}
+
+.learn-card h5 svg {
+  color: #22c55e;
+}
+
+.learn-card p {
+  margin: 10px 0;
+
+  color: #d1d5db;
+
+  line-height: 1.6;
+}
+
+.learn-card ul {
+  margin: 10px 0;
+  padding-left: 22px;
+
+  color: #d1d5db;
+}
+
+.learn-card li {
+  margin-bottom: 8px;
+}
+
+.learn-card a {
+  display: inline-block;
+  margin-top: 10px;
+
+  color: #38bdf8;
+
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.learn-card a:hover {
+  text-decoration: underline;
 }

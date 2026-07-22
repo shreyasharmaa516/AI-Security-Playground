@@ -9,12 +9,18 @@ def save_analysis(
     risk_score: int,
     severity: str,
     message: str,
+    detections=None,
+    ai_confidence=None,
+    analysis_engine="Rule Engine + Gemini AI",
 ):
     analysis = Analysis(
         prompt=prompt,
         risk_score=risk_score,
         severity=severity,
         message=message,
+        detections=detections,
+        ai_confidence=ai_confidence,
+        analysis_engine=analysis_engine,
     )
 
     db.add(analysis)
@@ -25,11 +31,7 @@ def save_analysis(
 
 
 def get_all_analyses(db: Session):
-    return (
-        db.query(Analysis)
-        .order_by(Analysis.created_at.desc())
-        .all()
-    )
+    return db.query(Analysis).order_by(Analysis.created_at.desc()).all()
 
 
 def get_dashboard_stats(db: Session):
@@ -37,17 +39,11 @@ def get_dashboard_stats(db: Session):
 
     total = len(analyses)
 
-    critical = len(
-        [a for a in analyses if a.severity == "Critical"]
-    )
+    critical = len([a for a in analyses if a.severity == "Critical"])
 
-    high = len(
-        [a for a in analyses if a.severity == "High"]
-    )
+    high = len([a for a in analyses if a.severity == "High"])
 
-    safe = len(
-        [a for a in analyses if a.severity == "Low"]
-    )
+    safe = len([a for a in analyses if a.severity == "Low"])
 
     return {
         "totalAnalyses": total,
@@ -55,4 +51,3 @@ def get_dashboard_stats(db: Session):
         "critical": critical,
         "safe": safe,
     }
-    

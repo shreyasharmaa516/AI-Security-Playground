@@ -3,7 +3,6 @@ import {
   FaShieldAlt,
   FaLightbulb,
   FaExclamationTriangle,
-  FaChartBar,
   FaCheckCircle,
 } from "react-icons/fa";
 
@@ -42,46 +41,45 @@ export default function ResultCard({ result }) {
         </div>
 
         <div className="stat-card">
+          <span className="stat-title">AI Confidence</span>
+
+          <h3>
+            {result.ai_confidence != null
+              ? `${Math.round(result.ai_confidence * 100)}%`
+              : "--"}
+          </h3>
+        </div>
+
+        <div className="stat-card">
           <span className="stat-title">Severity</span>
 
-          <div
-            className={`severity-badge ${result.severity.toLowerCase()}`}
-          >
+          <div className={`severity-badge ${result.severity.toLowerCase()}`}>
             {result.severity}
           </div>
         </div>
       </div>
 
-      <div
-        className={`analysis-message ${
-          hasThreats ? "danger" : "safe"
-        }`}
-      >
-        {hasThreats ? (
-          <FaExclamationTriangle />
-        ) : (
-          <FaCheckCircle />
-        )}
+      <div className={`analysis-message ${hasThreats ? "danger" : "safe"}`}>
+        {hasThreats ? <FaExclamationTriangle /> : <FaCheckCircle />}
 
-        <p>{result.message}</p>
+        <div className="ai-summary">
+          <h3>AI Security Summary</h3>
+
+          <p>{result.message}</p>
+        </div>
       </div>
 
       <h3>
         <FaExclamationTriangle />
-        Detected Rules
+        Detected Threats
       </h3>
 
       <div className="detections">
         {hasThreats ? (
           result.detections.map((item, index) => (
-            <div
-              key={index}
-              className="detection-card"
-            >
+            <div key={index} className="detection-card">
               <div className="detection-header">
-                <span className="detection-id">
-                  {item.id}
-                </span>
+                <span className="detection-id">{item.id}</span>
 
                 <span
                   className={`severity-badge ${item.severity.toLowerCase()}`}
@@ -90,7 +88,21 @@ export default function ResultCard({ result }) {
                 </span>
               </div>
 
-              <h4>{item.name}</h4>
+              <div className="detection-title">
+                <h4>{item.name}</h4>
+
+                {item.rule === "Gemini" && <span className="ai-badge">AI</span>}
+              </div>
+
+              <p>
+                <strong>Source:</strong>{" "}
+                {item.rule === "Gemini" ? "Gemini AI Analysis" : "Rule Engine"}
+              </p>
+
+              <p>
+                <strong>OWASP:</strong>{" "}
+                {item.owasp || "LLM01: Prompt Injection"}
+              </p>
 
               <p>
                 <strong>Rule:</strong> {item.rule}

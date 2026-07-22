@@ -38,9 +38,19 @@
 
 .dashboard-header p{
 
-    max-width:620px;
+    max-width:640px;
+
+    margin-top:10px;
+
+    font-size:1.02rem;
 
     color:var(--text-secondary);
+
+}
+
+.dashboard-header h1{
+
+    line-height:1.15;
 
 }
 

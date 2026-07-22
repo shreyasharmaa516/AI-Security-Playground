@@ -1,4 +1,4 @@
-# SentinelAI UI Wireframe
+# Sentra UI Wireframe
 
 ## Application Flow
 

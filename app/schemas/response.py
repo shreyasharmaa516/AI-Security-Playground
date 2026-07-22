@@ -9,6 +9,7 @@ class Detection(BaseModel):
     severity: str
     score: int
     description: str
+    owasp: str | None = None
     recommendation: str
 
 
@@ -16,5 +17,6 @@ class AnalysisResponse(BaseModel):
     prompt: str
     risk_score: int
     severity: str
+    ai_confidence: float | None = None
     detections: list[Detection]
     message: str

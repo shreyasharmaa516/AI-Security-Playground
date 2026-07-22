@@ -1,4 +1,4 @@
-# SentinelAI API
+# Sentra API
 
 ## Version 1.0 Endpoints
 
@@ -6,7 +6,7 @@
 
 **GET** `/health`
 
-Checks whether the SentinelAI backend is running.
+Checks whether the Sentra backend is running.
 
 ---
 
@@ -30,9 +30,7 @@ Analyzes a user prompt for potential AI security risks.
 {
   "risk_score": 85,
   "severity": "High",
-  "detections": [
-    "Prompt Injection"
-  ],
+  "detections": ["Prompt Injection"],
   "message": "Potential prompt injection detected."
 }
 ```
