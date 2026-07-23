@@ -27,10 +27,25 @@ Detect:
 Return ONLY valid JSON.
 
 {
-  "summary": "A concise security assessment in 2-3 sentences.",
+  "summary": "2-3 sentence security summary.",
   "severity": "Low | Medium | High | Critical",
   "confidence": 0.0,
   "risk_score": 0,
+
+  "business_impact": "",
+
+  "attack_scenario": "",
+
+  "owasp": "",
+
+  "recommendations": [
+    "",
+    "",
+    ""
+  ],
+
+  "secure_prompt": "",
+
   "detections": [
     {
       "name": "",
@@ -41,11 +56,21 @@ Return ONLY valid JSON.
 }
 
 Rules:
-- confidence must be between 0 and 1
-- risk_score must be an integer from 0 to 100
-- If no threats are found, return an empty detections array.
-- Do not return markdown.
-- Do not explain your reasoning outside the JSON.
+
+- Return ONLY valid JSON.
+- confidence must be between 0 and 1.
+- risk_score must be between 0 and 100.
+- business_impact should explain the real-world impact in enterprise environments.
+- attack_scenario should describe how an attacker might exploit this prompt.
+- owasp should contain the appropriate OWASP LLM Top 10 identifier (example: LLM01 Prompt Injection).
+- recommendations should contain 3 concise security recommendations.
+- secure_prompt should rewrite the user's prompt into a safe version while preserving the intent.
+- If no threats are found:
+    - detections should be []
+    - recommendations should still contain best practices.
+    - secure_prompt may equal the original prompt.
+- No markdown.
+- No explanations.
 """
 
 
@@ -72,9 +97,14 @@ def analyze_with_gemini(prompt: str):
 
     except json.JSONDecodeError:
         return {
-            "summary": "Unable to parse Gemini response.",
+            "summary": "Unable to analyze prompt.",
             "severity": "Low",
             "confidence": 0,
             "risk_score": 0,
+            "business_impact": "",
+            "attack_scenario": "",
+            "owasp": "",
+            "recommendations": [],
+            "secure_prompt": prompt,
             "detections": [],
         }

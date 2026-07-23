@@ -24,6 +24,16 @@ class AnalysisResponse(BaseModel):
 
     ai_confidence: float | None = None
 
-    detections: list[Detection]
-
     message: str
+
+    business_impact: str
+
+    attack_scenario: str
+
+    owasp: str
+
+    recommendations: list[str]
+
+    secure_prompt: str
+
+    detections: list[Detection]
