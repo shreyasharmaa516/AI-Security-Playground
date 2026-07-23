@@ -4,6 +4,7 @@ import ErrorBanner from "../../components/ui/ErrorBanner";
 import ResultSummaryBar from "../../components/ui/ResultSummaryBar";
 import PromptEditor from "./components/PromptEditor";
 import ThreatEnginePanel from "./components/ThreatEnginePanel";
+import AISecurityAnalyst from "./components/AISecurityAnalyst";
 import { analyzePrompt, CONTEXT_OPTIONS, DETECTION_CATEGORIES } from "./api";
 import "./AnalysisPage.css";
 
@@ -117,13 +118,24 @@ export default function AnalysisPage() {
       )}
 
       {phase === "success" && result && (
-        <ResultSummaryBar
-          riskScore={result.riskScore}
-          riskLevel={result.riskLevel}
-          onExport={handleExport}
-          onAddToReport={handleAddToReport}
-          onRerun={runScan}
-        />
+        <>
+          <ResultSummaryBar
+            riskScore={result.riskScore}
+            riskLevel={result.riskLevel}
+            onExport={handleExport}
+            onAddToReport={handleAddToReport}
+            onRerun={runScan}
+          />
+
+          <AISecurityAnalyst
+            summary={result.summary}
+            businessImpact={result.businessImpact}
+            attackScenario={result.attackScenario}
+            owasp={result.owasp}
+            securePrompt={result.securePrompt}
+            recommendations={result.recommendations}
+          />
+        </>
       )}
 
       {phase === "idle" && (

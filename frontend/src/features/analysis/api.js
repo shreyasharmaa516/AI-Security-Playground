@@ -74,16 +74,34 @@ export async function analyzePrompt(
 
   return {
     id: data.id,
+
     prompt,
+
     context,
+
     riskScore: data.risk_score,
+
     riskLevel:
       data.severity === "Critical"
         ? "critical"
         : data.severity === "High" || data.severity === "Medium"
           ? "warning"
           : "safe",
+
+    businessImpact: data.business_impact,
+
+    attackScenario: data.attack_scenario,
+
+    owasp: data.owasp,
+
+    recommendations: data.recommendations || [],
+
+    securePrompt: data.secure_prompt,
+
+    summary: data.message,
+
     detections,
+
     analyzedAt: new Date().toISOString(),
   };
 }
