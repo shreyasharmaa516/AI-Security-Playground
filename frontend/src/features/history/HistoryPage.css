@@ -1,0 +1,38 @@
+.history {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.history__table-card {
+  overflow: hidden;
+}
+
+.history__loading-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: var(--space-2);
+}
+
+.history__skeleton-row {
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    90deg,
+    var(--bg-hover) 0%,
+    var(--bg-surface-raised) 50%,
+    var(--bg-hover) 100%
+  );
+  background-size: 200% 100%;
+  animation: history-skeleton-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes history-skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

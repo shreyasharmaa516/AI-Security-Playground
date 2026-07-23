@@ -64,7 +64,7 @@ def analyze(
 ):
     result = analyze_prompt(request.prompt)
 
-    save_analysis(
+    analysis = save_analysis(
         db=db,
         prompt=result["prompt"],
         risk_score=result["risk_score"],
@@ -74,6 +74,8 @@ def analyze(
         ai_confidence=result.get("ai_confidence"),
         analysis_engine="Rule Engine + Gemini AI",
     )
+
+    result["id"] = analysis.id
 
     return result
 

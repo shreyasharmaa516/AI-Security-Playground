@@ -1,0 +1,59 @@
+.security-insights {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.security-insight {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-left: 2px solid var(--border-default);
+  background-color: var(--bg-hover);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.security-insight__icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.security-insight__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.security-insight__text {
+  color: var(--text-primary);
+}
+
+.security-insight--critical {
+  border-left-color: var(--signal-critical);
+}
+.security-insight--critical .security-insight__icon {
+  color: var(--signal-critical);
+}
+
+.security-insight--warning {
+  border-left-color: var(--signal-warning);
+}
+.security-insight--warning .security-insight__icon {
+  color: var(--signal-warning);
+}
+
+.security-insight--info {
+  border-left-color: var(--signal-info);
+}
+.security-insight--info .security-insight__icon {
+  color: var(--signal-info);
+}
+
+.security-insight--safe {
+  border-left-color: var(--signal-safe);
+}
+.security-insight--safe .security-insight__icon {
+  color: var(--signal-safe);
+}

@@ -39,15 +39,23 @@ def get_dashboard_stats(db: Session):
 
     total = len(analyses)
 
-    critical = len([a for a in analyses if a.severity == "Critical"])
+    critical = sum(1 for a in analyses if a.severity == "Critical")
+    high = sum(1 for a in analyses if a.severity == "High")
+    medium = sum(1 for a in analyses if a.severity == "Medium")
+    low = sum(1 for a in analyses if a.severity == "Low")
 
-    high = len([a for a in analyses if a.severity == "High"])
+    security_score = round(sum(a.risk_score for a in analyses) / total) if total else 0
 
-    safe = len([a for a in analyses if a.severity == "Low"])
+    detection_rate = (
+        round(((critical + high + medium) / total) * 100, 1) if total else 0
+    )
 
     return {
-        "totalAnalyses": total,
-        "highRisk": high,
-        "critical": critical,
-        "safe": safe,
+        "security_score": security_score,
+        "critical_threats": critical,
+        "total_analyses": total,
+        "detection_rate": detection_rate,
+        "high": high,
+        "medium": medium,
+        "safe": low,
     }

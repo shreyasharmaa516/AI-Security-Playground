@@ -1,0 +1,40 @@
+.app-shell {
+  min-height: 100%;
+  background-color: var(--bg-canvas);
+}
+
+.app-shell__main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-left: var(--sidebar-width);
+  transition: margin-left var(--transition-panel);
+}
+
+.app-shell__main--collapsed {
+  margin-left: var(--sidebar-width-collapsed);
+}
+
+/* Sidebar auto-collapses to a rail below 1024px regardless of toggle state */
+@media (max-width: 1024px) {
+  .app-shell__main {
+    margin-left: var(--sidebar-width-collapsed);
+  }
+}
+
+.app-shell__content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.app-shell__content-inner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--space-8);
+}
+
+@media (max-width: 1024px) {
+  .app-shell__content-inner {
+    padding: var(--space-4);
+  }
+}

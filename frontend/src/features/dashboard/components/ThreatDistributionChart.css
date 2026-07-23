@@ -1,0 +1,49 @@
+.threat-distribution {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.threat-distribution__chart {
+  position: relative;
+  height: 180px;
+}
+
+.threat-distribution__chart canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.threat-distribution__legend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.threat-distribution__legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.threat-distribution__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  flex-shrink: 0;
+}
+
+.threat-distribution__legend-label {
+  font-size: var(--text-body-sm-size);
+  color: var(--text-secondary);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.threat-distribution__legend-value {
+  color: var(--text-primary);
+  flex-shrink: 0;
+}

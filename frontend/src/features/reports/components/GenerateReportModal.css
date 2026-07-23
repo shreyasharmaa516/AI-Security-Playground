@@ -1,0 +1,32 @@
+.generate-report-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.generate-report-modal__sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.generate-report-modal__checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.generate-report-modal__checkbox-row:hover {
+  background-color: var(--bg-hover);
+}
+
+.generate-report-modal__checkbox-row input {
+  accent-color: var(--accent-blue);
+}
+
+.generate-report-modal__checkbox-row span {
+  color: var(--text-primary);
+}

@@ -1,0 +1,11 @@
+.quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.quick-actions__btn {
+  flex: 1;
+  min-width: 180px;
+  justify-content: flex-start;
+}

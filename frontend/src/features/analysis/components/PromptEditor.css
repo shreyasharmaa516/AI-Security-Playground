@@ -1,0 +1,23 @@
+.prompt-editor__context-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.prompt-editor__context-label {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.prompt-editor__textarea {
+  min-height: 320px;
+}
+
+.prompt-editor__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}

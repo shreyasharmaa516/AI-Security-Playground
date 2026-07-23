@@ -1,28 +1,13 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App.jsx';
 
-import "./styles/index.css";
+import './styles/tokens.css';
+import './styles/global.css';
+import './styles/typography.css';
 
-import App from "./App";
-
-import { DashboardProvider } from "./context/DashboardContext";
-import { HistoryProvider } from "./context/HistoryContext";
-import { SearchProvider } from "./context/SearchContext/SearchContext";
-
-createRoot(document.getElementById("root")).render(
+createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <DashboardProvider>
-
-      <HistoryProvider>
-
-        <SearchProvider>
-
-          <App />
-
-        </SearchProvider>
-
-      </HistoryProvider>
-
-    </DashboardProvider>
-  </StrictMode>
+    <App />
+  </StrictMode>,
 );

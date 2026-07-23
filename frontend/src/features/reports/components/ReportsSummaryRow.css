@@ -1,0 +1,16 @@
+.reports-summary-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+@media (max-width: 900px) {
+  .reports-summary-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.reports-summary-row__text-card .stat-card__value {
+  font-size: 20px;
+  line-height: 28px;
+}

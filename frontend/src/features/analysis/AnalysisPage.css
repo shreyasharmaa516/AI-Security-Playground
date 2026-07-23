@@ -1,0 +1,26 @@
+.analysis {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.analysis__grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--space-4);
+  align-items: stretch;
+}
+
+@media (max-width: 1024px) {
+  .analysis__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.analysis__hint {
+  border-style: dashed;
+}
+
+.analysis__hint p {
+  color: var(--text-tertiary);
+}

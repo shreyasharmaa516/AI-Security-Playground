@@ -1,0 +1,66 @@
+.history-table__status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+}
+
+.history-table__status-dot--safe {
+  background-color: var(--signal-safe);
+}
+.history-table__status-dot--warning {
+  background-color: var(--signal-warning);
+}
+.history-table__status-dot--critical {
+  background-color: var(--signal-critical);
+}
+
+.history-table__prompt {
+  display: block;
+  max-width: 420px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-primary);
+}
+
+.history-table__none {
+  color: var(--text-tertiary);
+}
+
+.history-table__chips {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--space-1);
+}
+
+.history-table__chip {
+  font-size: var(--text-caption-size);
+  font-weight: 500;
+  color: var(--text-secondary);
+  background-color: var(--bg-hover);
+  border-radius: var(--radius-sm);
+  padding: 2px var(--space-2);
+  white-space: nowrap;
+}
+
+.history-table__chip--overflow {
+  color: var(--text-tertiary);
+}
+
+.history-table__kebab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  color: var(--text-tertiary);
+}
+
+.history-table__kebab:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}

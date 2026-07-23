@@ -1,0 +1,114 @@
+.engine-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.engine-row {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-hover);
+  overflow: hidden;
+}
+
+.engine-row__header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: transparent;
+  border: none;
+  text-align: left;
+}
+
+.engine-row__header:disabled {
+  cursor: default;
+}
+
+.engine-row__icon {
+  flex-shrink: 0;
+  color: var(--text-tertiary);
+}
+
+.engine-row__icon--spin {
+  animation: engine-row-spin 0.9s linear infinite;
+}
+
+@keyframes engine-row-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.engine-row__label {
+  color: var(--text-primary);
+  flex: 1;
+  min-width: 0;
+}
+
+.engine-row__status {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption-size);
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+.engine-row__chevron {
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.engine-row__chevron--open {
+  transform: rotate(180deg);
+}
+
+.engine-row__details {
+  padding: 0 var(--space-3) var(--space-3) calc(16px + var(--space-3) + var(--space-3));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.engine-row__details-label {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.engine-row__details-text {
+  color: var(--text-secondary);
+  background-color: var(--bg-canvas);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+}
+
+/* ---- Status coloring ---- */
+.engine-row--clear .engine-row__icon {
+  color: var(--signal-safe);
+}
+
+.engine-row--scanning .engine-row__icon {
+  color: var(--accent-blue);
+}
+
+.engine-row--warning {
+  border-color: rgba(245, 158, 11, 0.25);
+}
+.engine-row--warning .engine-row__icon {
+  color: var(--signal-warning);
+}
+.engine-row--warning .engine-row__status {
+  color: var(--signal-warning);
+}
+
+.engine-row--critical {
+  border-color: rgba(239, 68, 68, 0.25);
+}
+.engine-row--critical .engine-row__icon {
+  color: var(--signal-critical);
+}
+.engine-row--critical .engine-row__status {
+  color: var(--signal-critical);
+}

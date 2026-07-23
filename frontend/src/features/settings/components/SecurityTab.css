@@ -1,0 +1,62 @@
+.security-tab {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.security-tab__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.security-tab__key-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.security-tab__key {
+  flex: 1;
+  min-width: 220px;
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--bg-canvas);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+}
+
+.security-tab__hint {
+  color: var(--text-tertiary);
+}
+
+.security-tab__device-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-primary);
+}
+
+.security-tab__device-icon {
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+.security-tab__revoke {
+  background: transparent;
+  border: none;
+  color: var(--signal-critical);
+  font-size: var(--text-body-sm-size);
+  font-weight: 500;
+}
+
+.security-tab__revoke:hover {
+  text-decoration: underline;
+}
+
+.security-tab__sessions-table {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}

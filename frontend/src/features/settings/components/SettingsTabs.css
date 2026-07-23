@@ -1,0 +1,46 @@
+.settings-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.settings-tabs__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  height: 36px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: var(--text-body-size);
+  font-weight: 500;
+  text-align: left;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.settings-tabs__item:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.settings-tabs__item--active {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.settings-tabs__item--active svg {
+  color: var(--accent-blue);
+}
+
+@media (max-width: 800px) {
+  .settings-tabs {
+    flex-direction: row;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: var(--space-1);
+  }
+}

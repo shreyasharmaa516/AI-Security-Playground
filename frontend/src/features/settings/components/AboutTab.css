@@ -1,0 +1,31 @@
+.about-tab {
+  display: flex;
+  flex-direction: column;
+  max-width: 420px;
+}
+
+.about-tab__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.about-tab__row:last-child {
+  border-bottom: none;
+}
+
+.about-tab__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--accent-blue);
+  font-size: var(--text-body-sm-size);
+  font-weight: 500;
+}
+
+.about-tab__link:hover {
+  text-decoration: underline;
+}

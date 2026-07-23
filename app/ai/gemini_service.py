@@ -51,9 +51,30 @@ Rules:
 
 def analyze_with_gemini(prompt: str):
     response = client.models.generate_content(
-        model="gemini-3.5-flash",
+        model="gemini-flash-latest",
         contents=f"{SYSTEM_PROMPT}\n\nPrompt:\n{prompt}",
-        config=types.GenerateContentConfig(response_mime_type="application/json"),
+        config=types.GenerateContentConfig(
+            response_mime_type="application/json",
+            temperature=0,
+        ),
     )
 
-    return json.loads(response.text)
+    text = response.text.strip()
+
+    if text.startswith("```json"):
+        text = text.replace("```json", "").replace("```", "").strip()
+
+    elif text.startswith("```"):
+        text = text.replace("```", "").strip()
+
+    try:
+        return json.loads(text)
+
+    except json.JSONDecodeError:
+        return {
+            "summary": "Unable to parse Gemini response.",
+            "severity": "Low",
+            "confidence": 0,
+            "risk_score": 0,
+            "detections": [],
+        }

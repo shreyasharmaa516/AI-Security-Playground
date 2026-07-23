@@ -1,0 +1,9 @@
+.threat-breakdown-chart {
+  position: relative;
+  height: 220px;
+}
+
+.threat-breakdown-chart canvas {
+  width: 100% !important;
+  height: 100% !important;
+}

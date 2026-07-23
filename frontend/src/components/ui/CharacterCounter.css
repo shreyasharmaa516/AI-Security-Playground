@@ -1,0 +1,17 @@
+.character-counter {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption-size);
+  font-weight: 500;
+}
+
+.character-counter--default {
+  color: var(--text-tertiary);
+}
+
+.character-counter--warning {
+  color: var(--signal-warning);
+}
+
+.character-counter--over {
+  color: var(--signal-critical);
+}

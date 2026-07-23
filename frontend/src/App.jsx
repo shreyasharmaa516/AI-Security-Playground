@@ -1,31 +1,23 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-
-import Layout from "./layout/Layout";
-
-import Dashboard from "./pages/Dashboard/Dashboard";
-import Analysis from "./pages/Analysis/Analysis";
-import History from "./pages/History/History";
-import Reports from "./pages/Reports/Reports";
-import Settings from "./pages/Settings/Settings";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AppShell from './components/layout/AppShell';
+import Dashboard from './pages/Dashboard';
+import Analysis from './pages/Analysis';
+import History from './pages/History';
+import Reports from './pages/Reports';
+import Settings from './pages/Settings';
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
-
-          <Route path="/dashboard" element={<Dashboard />} />
-
+      <Routes>
+        <Route element={<AppShell />}>
+          <Route path="/" element={<Dashboard />} />
           <Route path="/analysis" element={<Analysis />} />
-
           <Route path="/history" element={<History />} />
-
           <Route path="/reports" element={<Reports />} />
-
           <Route path="/settings" element={<Settings />} />
-        </Routes>
-      </Layout>
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 }

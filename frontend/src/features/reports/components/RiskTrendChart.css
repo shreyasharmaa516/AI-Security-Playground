@@ -1,0 +1,9 @@
+.risk-trend-chart {
+  position: relative;
+  height: 260px;
+}
+
+.risk-trend-chart canvas {
+  width: 100% !important;
+  height: 100% !important;
+}

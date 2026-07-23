@@ -1,29 +1,36 @@
-# Virtual Environment
-.venv/
-
 # Python
+.venv/
+venv/
 __pycache__/
 *.py[cod]
-*.pyo
-*.egg-info/
+.pytest_cache/
 
-# Environment Variables
+# Environment
 .env
-
-# Logs
-logs/
-*.log
 
 # Database
 *.db
+*.sqlite3
 
-# IDE
+# Generated Reports
+generated_reports/
+
+# Logs
+logs/
+
+# Node
+node_modules/
+
+# React
+dist/
+build/
+
+# VS Code
 .vscode/
+
+# JetBrains
+.idea/
 
 # OS
 .DS_Store
 Thumbs.db
-
-# Reports
-reports/*.pdf
-reports/*.html

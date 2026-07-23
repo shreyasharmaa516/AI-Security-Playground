@@ -1,0 +1,48 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.dashboard__toolbar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ---- Charts row: 8/4 split (timeline gets more room) ---- */
+.dashboard__charts-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-4);
+  align-items: stretch;
+}
+
+@media (max-width: 1100px) {
+  .dashboard__charts-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Lower row: 7/5 split (recent analyses gets more room) ---- */
+.dashboard__lower-row {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: var(--space-4);
+  align-items: stretch;
+}
+
+@media (max-width: 1100px) {
+  .dashboard__lower-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dashboard__view-all {
+  color: var(--accent-blue);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.dashboard__view-all:hover {
+  text-decoration: underline;
+}

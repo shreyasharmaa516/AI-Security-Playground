@@ -14,9 +14,16 @@ class Detection(BaseModel):
 
 
 class AnalysisResponse(BaseModel):
+    id: int
+
     prompt: str
+
     risk_score: int
+
     severity: str
+
     ai_confidence: float | None = None
+
     detections: list[Detection]
+
     message: str
