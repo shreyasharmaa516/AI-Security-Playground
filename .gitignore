@@ -33,4 +33,7 @@ build/
 
 # OS
 .DS_Store
-Thumbs.db
+Thumbs.dbsentra.db
+generated_reports/
+logs/
+data/

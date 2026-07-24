@@ -1,11 +1,11 @@
-import { ScanSearch } from 'lucide-react';
-import Card from '../../../components/ui/Card';
-import Textarea from '../../../components/ui/Textarea';
-import CharacterCounter from '../../../components/ui/CharacterCounter';
-import SegmentedControl from '../../../components/ui/SegmentedControl';
-import Button from '../../../components/ui/Button';
-import { CONTEXT_OPTIONS, PROMPT_MAX_LENGTH } from '../api';
-import './PromptEditor.css';
+import { ScanSearch } from "lucide-react";
+import Card from "../../../components/ui/Card";
+import Textarea from "../../../components/ui/Textarea";
+import CharacterCounter from "../../../components/ui/CharacterCounter";
+import SegmentedControl from "../../../components/ui/SegmentedControl";
+import Button from "../../../components/ui/Button";
+import { CONTEXT_OPTIONS, PROMPT_MAX_LENGTH } from "../api";
+import "./PromptEditor.css";
 
 /**
  * PromptEditor
@@ -28,12 +28,20 @@ export default function PromptEditor({
     <Card
       eyebrow="Scan Input"
       title="Prompt Input"
-      action={<CharacterCounter current={prompt.length} max={PROMPT_MAX_LENGTH} />}
+      action={
+        <CharacterCounter current={prompt.length} max={PROMPT_MAX_LENGTH} />
+      }
       className="prompt-editor"
     >
       <div className="prompt-editor__context-row">
-        <span className="text-caption prompt-editor__context-label">Simulate as</span>
-        <SegmentedControl options={CONTEXT_OPTIONS} value={context} onChange={onContextChange} />
+        <span className="text-caption prompt-editor__context-label">
+          Simulate as
+        </span>
+        <SegmentedControl
+          options={CONTEXT_OPTIONS}
+          value={context}
+          onChange={onContextChange}
+        />
       </div>
 
       <Textarea
@@ -47,7 +55,11 @@ export default function PromptEditor({
       />
 
       <div className="prompt-editor__footer">
-        <Button variant="ghost" onClick={onClear} disabled={isScanning || isEmpty}>
+        <Button
+          variant="ghost"
+          onClick={onClear}
+          disabled={isScanning || isEmpty}
+        >
           Clear
         </Button>
         <Button
@@ -57,7 +69,7 @@ export default function PromptEditor({
           disabled={isEmpty || isOverLimit}
           onClick={onRun}
         >
-          {isScanning ? 'Analyzing…' : 'Run Analysis'}
+          {isScanning ? "Analyzing…" : "Run Analysis"}
         </Button>
       </div>
     </Card>

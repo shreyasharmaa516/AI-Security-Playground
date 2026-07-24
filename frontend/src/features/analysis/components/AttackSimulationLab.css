@@ -1,0 +1,48 @@
+.attack-lab {
+  margin-bottom: 24px;
+}
+
+.attack-lab__header {
+  margin-bottom: 20px;
+}
+
+.attack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 18px;
+}
+
+.attack-card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.attack-card h3 {
+  margin: 0 0 12px;
+}
+
+.attack-card p {
+  opacity: 0.7;
+  margin: 12px 0;
+}
+
+.severity {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.severity-critical {
+  background: #ffdddd;
+}
+
+.severity-high {
+  background: #ffe8cc;
+}
+
+.severity-medium {
+  background: #fff3bf;
+}

@@ -5,6 +5,7 @@ import ResultSummaryBar from "../../components/ui/ResultSummaryBar";
 import PromptEditor from "./components/PromptEditor";
 import ThreatEnginePanel from "./components/ThreatEnginePanel";
 import AISecurityAnalyst from "./components/AISecurityAnalyst";
+import AttackSimulationLab from "./components/AttackSimulationLab";
 import { analyzePrompt, CONTEXT_OPTIONS, DETECTION_CATEGORIES } from "./api";
 import "./AnalysisPage.css";
 
@@ -23,37 +24,46 @@ export default function AnalysisPage() {
   const [result, setResult] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const runScan = useCallback(async () => {
-    setPhase("scanning");
-    setStatuses(IDLE_STATUSES);
-    setDetails({});
-    setResult(null);
-    setErrorMessage(null);
+  const runScan = useCallback(
+    async (customPrompt) => {
+      const promptToScan =
+        typeof customPrompt === "string" ? customPrompt : prompt;
 
-    try {
-      const res = await analyzePrompt(
-        { prompt, context },
-        {
-          onEngineUpdate: (categoryId, status, detail) => {
-            setStatuses((prev) => ({ ...prev, [categoryId]: status }));
+      setPhase("scanning");
+      setStatuses(IDLE_STATUSES);
+      setDetails({});
+      setResult(null);
+      setErrorMessage(null);
 
-            if (detail) {
-              setDetails((prev) => ({
-                ...prev,
-                [categoryId]: detail,
-              }));
-            }
+      try {
+        const res = await analyzePrompt(
+          {
+            prompt: promptToScan,
+            context,
           },
-        },
-      );
+          {
+            onEngineUpdate: (categoryId, status, detail) => {
+              setStatuses((prev) => ({ ...prev, [categoryId]: status }));
 
-      setResult(res);
-      setPhase("success");
-    } catch (err) {
-      setErrorMessage(err.message || "Analysis failed.");
-      setPhase("error");
-    }
-  }, [prompt, context]);
+              if (detail) {
+                setDetails((prev) => ({
+                  ...prev,
+                  [categoryId]: detail,
+                }));
+              }
+            },
+          },
+        );
+
+        setResult(res);
+        setPhase("success");
+      } catch (err) {
+        setErrorMessage(err.message || "Analysis failed.");
+        setPhase("error");
+      }
+    },
+    [prompt, context],
+  );
 
   function handleClear() {
     setPrompt("");
@@ -134,6 +144,14 @@ export default function AnalysisPage() {
             owasp={result.owasp}
             securePrompt={result.securePrompt}
             recommendations={result.recommendations}
+          />
+
+          <AttackSimulationLab
+            onSelect={setPrompt}
+            onRun={(selectedPrompt) => {
+              setPrompt(selectedPrompt);
+              runScan(selectedPrompt);
+            }}
           />
         </>
       )}
